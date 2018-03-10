@@ -3,7 +3,6 @@ module Main where
 import Types
 import PosTagger (combinedTagger)
 
-
 main = putStrLn "TEST"
 
 sampleSentence :: String
