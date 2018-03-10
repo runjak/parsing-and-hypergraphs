@@ -52,3 +52,8 @@ testApplyRule = applyRule testRule testEdges
                     , PassiveEdge PP (17, 20)
                     , PassiveEdge N (21, 13)
                     ]
+
+applyRules :: [ProductionRule] -> [Edge] -> [[Edge]]
+applyRules rules edges = do
+  rule <- rules
+  applyRule rule edges
