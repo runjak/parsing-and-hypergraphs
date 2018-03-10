@@ -25,4 +25,4 @@ spanify = go 0 . words
         go _ [] = []
 
 combinedTagger :: Tagger
-combinedTagger sentence = zipWith PassiveEdge (tag sentence) (spanify sentence)
+combinedTagger sentence = zipWith3 PassiveEdge (tag sentence) (spanify sentence) (words sentence)

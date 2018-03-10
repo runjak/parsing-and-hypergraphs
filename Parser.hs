@@ -10,7 +10,7 @@ defaultParserConfig :: ParserConfig
 defaultParserConfig = ParserConfig combinedTagger activeRules
 
 parse :: Parser
-parse (ParserConfig tagger productionRules) sentence = parse' $ tagger sentence
+parse (ParserConfig tagger productionRules) sentence = List.nub $ parse' $ tagger sentence
   where
     parse' :: [Edge] -> [Edge]
     parse' edges = do

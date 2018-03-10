@@ -7,7 +7,7 @@ data Category = NP | V | N | P | Art | Unknown | PP | S | VP
 
 type ProductionRule = (Category,[Category])
 
-data Edge = PassiveEdge Category Span
+data Edge = PassiveEdge Category Span String
           | ActiveEdge ProductionRule Span [Edge]
           deriving(Show, Eq, Ord)
 

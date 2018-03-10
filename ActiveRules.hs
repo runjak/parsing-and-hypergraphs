@@ -14,11 +14,11 @@ activeRules = [(S,[NP,VP])
             , (PP,[P,NP])]
 
 getCategory :: Edge -> Category
-getCategory (PassiveEdge c _)      = c
+getCategory (PassiveEdge c _ _)    = c
 getCategory (ActiveEdge (c,_) _ _) = c
 
 getSpan :: Edge -> Span
-getSpan (PassiveEdge _ s)   = s
+getSpan (PassiveEdge _ s _) = s
 getSpan (ActiveEdge  _ s _) = s
 
 combineSpans :: [Edge] -> Maybe Span
@@ -29,7 +29,7 @@ combineSpans edges = let headSpan = getSpan $ head edges
 
 applyRule :: ProductionRule -> [Edge] -> [[Edge]]
 applyRule _ [] = []
-applyRule rule@(ruleHead, ruleBody) edges = do
+applyRule rule@(_, ruleBody) edges = do
     (prefix, suffix) <- zip (List.inits edges) (List.tails edges)
     let suffixCategories = map getCategory suffix
     guard $ List.isPrefixOf ruleBody suffixCategories
@@ -44,13 +44,13 @@ testApplyRule = applyRule testRule testEdges
         testRule = activeRules !! 1
 
         testEdges :: [Edge]
-        testEdges = [ PassiveEdge N (0, 4)
-                    , PassiveEdge S (5, 6)
-                    , PassiveEdge PP (7, 10)
-                    , PassiveEdge N (11, 13)
-                    , PassiveEdge S (14, 16)
-                    , PassiveEdge PP (17, 20)
-                    , PassiveEdge N (21, 13)
+        testEdges = [ PassiveEdge N (0, 4) ""
+                    , PassiveEdge S (5, 6) ""
+                    , PassiveEdge PP (7, 10) ""
+                    , PassiveEdge N (11, 13) ""
+                    , PassiveEdge S (14, 16) ""
+                    , PassiveEdge PP (17, 20) ""
+                    , PassiveEdge N (21, 25) ""
                     ]
 
 applyRules :: [ProductionRule] -> [Edge] -> [[Edge]]
