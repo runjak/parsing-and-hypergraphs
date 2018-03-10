@@ -2,7 +2,7 @@ module Types where
 
 type Span = (Int, Int)
 
-data Category = NP | V | N | P | Art | Unknown | PP | S
+data Category = NP | V | N | P | Art | Unknown | PP | S | VP
     deriving (Show, Eq, Ord)
 
 type ProductionRule = (Category,[Category])
