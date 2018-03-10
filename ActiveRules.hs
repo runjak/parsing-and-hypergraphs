@@ -40,15 +40,15 @@ applyRule rule@(ruleHead, ruleBody) edges = do
     return $ prefix ++ [newEdge] ++ suffixSuffix
 
 testApplyRule = applyRule testRule testEdges
-  where
-    testRule = activeRules !! 1
+    where
+        testRule = activeRules !! 1
 
-    testEdges :: [Edge]
-    testEdges = [ PassiveEdge N (0, 4)
-                , PassiveEdge S (5, 6)
-                , PassiveEdge PP (7, 10)
-                , PassiveEdge N (11, 13)
-                , PassiveEdge S (14, 16)
-                , PassiveEdge PP (17, 20)
-                , PassiveEdge N (21, 13)
-                ]
+        testEdges :: [Edge]
+        testEdges = [ PassiveEdge N (0, 4)
+                    , PassiveEdge S (5, 6)
+                    , PassiveEdge PP (7, 10)
+                    , PassiveEdge N (11, 13)
+                    , PassiveEdge S (14, 16)
+                    , PassiveEdge PP (17, 20)
+                    , PassiveEdge N (21, 13)
+                    ]
