@@ -24,5 +24,5 @@ spanify = go 0 . words
             in (i, i') : go i' ws
         go _ [] = []
 
-combinedTagger :: String -> [(Category, Span)]
-combinedTagger sentence = zip (tag sentence) (spanify sentence)
+combinedTagger :: String -> [Edge] -- so edgy
+combinedTagger sentence = zipWith PassiveEdge (tag sentence) (spanify sentence)
